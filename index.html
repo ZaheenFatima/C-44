@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+  <html lang="">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Matter JS BoilerPlate</title>
+      <style> body {padding: 0; margin: 0;} </style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+
+      
+      <script src="p5.play.js"></script>
+      <script src="Country.js"></script>
+      <script src="sketch.js"></script>
+
+    </head>
+    <body>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.0/firebase-database.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDfv3qBya-wSky5TZpIUwnsm_YP66Z4h70",
+    authDomain: "pollution-check-42765.firebaseapp.com",
+    databaseURL: "https://pollution-check-42765.firebaseio.com",
+    projectId: "pollution-check-42765",
+    storageBucket: "pollution-check-42765.appspot.com",
+    messagingSenderId: "1027028048562",
+    appId: "1:1027028048562:web:1a68428f4d475e6a9b07ab"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+      <script type="text/javascript">
+        (async () => {
+          const where = encodeURIComponent(JSON.stringify({
+            "name": {
+              "$exists": true
+            }
+          }));
+          const response = await fetch(
+            `https://parseapi.back4app.com/classes/Continentscountriescities_Country?limit=10&order=name&keys=name&where=${where}`,
+            {
+              headers: {
+                'X-Parse-Application-Id': '4jzYBgyxFwC6JYt0h7Zz4lAUWg1z1cyZDdB27JNu', // This is your app's application id
+                'X-Parse-REST-API-Key': 'RcGft0GW5KEn4Q34H6zqma9BDuhnGiirKrOB5vWM', // This is your app's REST API key
+              }
+            }
+          );
+          const data = await response.json(); // Here you have the data that you need
+          console.log(JSON.stringify(data, null, 2));
+        })();
+      </script>
+    </body>
+  </html>
+  
+    
+    
+      
